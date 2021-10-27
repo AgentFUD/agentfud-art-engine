@@ -12,7 +12,7 @@ def read_requirements():
 
 setup(
     name="artengine",
-    version="0.1",
+    version="0.1.1",
     author='Agent FUD',
     author_email='agentfud@gmail.com',
     description=DESCRIPTION,
