@@ -1,7 +1,12 @@
 from setuptools import setup, find_packages
+from pathlib import Path
+import os, pathlib
 
 DESCRIPTION = 'Agent FUD Art Engine'
-LONG_DESCRIPTION = 'Art Engine which helps you to generate thousands of images - best tool for NFT generation'
+
+this_directory = pathlib.Path(__file__).parent.resolve()
+with open(os.path.join(this_directory, 'README.md')) as readme:
+    LONG_DESCRIPTION = readme.read()
 
 def read_requirements():
     with open("requirements.txt") as req:
@@ -12,11 +17,12 @@ def read_requirements():
 
 setup(
     name="artengine",
-    version="0.1.1",
+    version="0.1.4",
     author='Agent FUD',
     author_email='agentfud@gmail.com',
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/markdown",
     packages=find_packages(),
     include_package_data=True,
     install_requires=read_requirements(),

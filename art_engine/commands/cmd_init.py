@@ -2,6 +2,7 @@ import click
 import os
 import shutil
 from art_engine import appconfig
+import pathlib
 
 
 @click.command()
@@ -18,7 +19,6 @@ def cli(target_directory):
     """
     click.echo("Init started ...")
 
-    import pathlib
     parent_dir = pathlib.Path(__file__).parent.resolve().parent.resolve()
     instance_config_full_path = os.path.join(parent_dir, 'instance_config.py')
 
