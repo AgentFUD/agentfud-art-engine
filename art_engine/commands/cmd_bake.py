@@ -7,8 +7,8 @@ import art_engine.appconfig as config
 
 @click.command()
 @click.argument('type', type=click.Choice(['images', 'metadata', 'both']))
-@click.option('--quantity', type=int, required=True, help='How many I should generate')
-@click.option('--regenerate', type=bool)
+@click.option('--quantity', '-q', type=int, required=True, help='How many I should generate')
+@click.option('--regenerate', '-rg', type=bool)
 def cli(type, quantity, regenerate):
     """
     Bakes images and metadata files
