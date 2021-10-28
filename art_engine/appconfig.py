@@ -18,7 +18,7 @@ image_size = (601, 701)
 
 item_name = "Filemon"
 
-description = "Yoooo Schrödinger's cat who's name is Filemon"
+description = "Schrödinger's cat who's name is Filemon"
 
 engine_name = "Agent FUD Art Engine v0.1"
 

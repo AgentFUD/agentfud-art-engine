@@ -32,4 +32,10 @@ setup(
         [console_scripts]
         artengine=art_engine.cli:cli
     """,
+    classifiers=[
+       "Programming Language :: Python :: 3",
+       "License :: OSI Approved :: MIT License",
+       "Operating System :: OS Independent",
+   ],
+   python_requires='>=3.6'
 )

@@ -9,5 +9,6 @@ def cli():
     Generates rarity config json file
     """
     engine = ArtEngine(config)
+    engine.setup_engine()
     engine.generate_rarity_config()
     print("Generates rarity config json file.")

@@ -16,6 +16,7 @@ def images(quantity):
     """Builds images based on configuration"""
     click.echo("Building images...")
     engine = ArtEngine(config)
+    engine.setup_engine()
     engine.generate_dnas(quantity)
     engine.generate_sprite_configs()
     for index, sprite_config in enumerate(engine.sprite_configs):
@@ -28,6 +29,7 @@ def metadata(quantity):
     """Builds metadata based on configuration"""
     click.echo("Building metadata...")
     engine = ArtEngine(config)
+    engine.setup_engine()
     engine.generate_dnas(quantity)
     engine.generate_sprite_configs()
     for index, dna in enumerate(engine.dnas):
@@ -40,6 +42,7 @@ def all(quantity):
     """Builds images based on configuration"""
     click.echo("Building images and metadata...")
     engine = ArtEngine(config)
+    engine.setup_engine()
     engine.generate_dnas(quantity)
     engine.generate_sprite_configs()
     for index, sprite_config in enumerate(engine.sprite_configs):

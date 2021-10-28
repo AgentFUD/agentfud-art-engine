@@ -1,7 +1,7 @@
 from PIL import Image
 
 import math, random, json, time
-import os
+import os, sys
 
 
 class ArtEngine:
@@ -11,7 +11,27 @@ class ArtEngine:
         self.sprite_configs = []
         self.trait_options = {}
         self.max_possible_combinations = 0
+        self.checker()
 
+    def checker(self):
+        """
+        Checker checks if config is aligned with layers so info and other commands can be called without a crash.
+        If there is a problem it should catch the exception and notify user he has to fix configuration and/or layers.
+        """
+        # Check if config has traits
+        if not hasattr(self.config, 'traits'):
+            print('You have to define traits in your instance_config.py file')
+            sys.exit()
+        # Check if trait folders exists
+        for trait_name in self.config.traits:
+            if trait_name == 'Color':
+                continue
+            if not os.path.isdir("./layers/simple/" + trait_name):
+                print(f"Trait: {trait_name} is defined in config but not exists as a directory")
+                sys.exit()
+
+
+    def setup_engine(self):
         self.prepare_trait_options()
         self.calculate_max_possible_combinations()
 
