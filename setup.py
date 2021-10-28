@@ -17,7 +17,7 @@ def read_requirements():
 
 setup(
     name="artengine",
-    version="0.1.6a",
+    version="0.1.7",
     author='Agent FUD',
     author_email='agentfud@gmail.com',
     description=DESCRIPTION,
