@@ -30,7 +30,7 @@ source ./env/bin/activate
 Install agentfud-art-engine
 
 ```bash
-pip install artengine
+pip install agentfud-art-engine
 ```
 
 Create first project in my_project directory

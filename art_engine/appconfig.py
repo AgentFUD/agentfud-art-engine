@@ -14,7 +14,7 @@ RARITY_JSON_NAME = "rarity-config.json"
 
 max_items = 10
 
-image_size = (601, 701)
+image_size = (600, 700)
 
 item_name = "Filemon"
 
