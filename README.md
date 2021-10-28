@@ -1,16 +1,44 @@
 # agentfud-art-engine
 Art engine which helps you to generate thousands of beautiful images for the NFT market.
 
-## Install
+## Features
+
+- Configurable layers
+- Information about your project
+- Metadata and image generation
+- Excluding traits from metadata
+
+## Installation
+
+### via `pip`
+
+All the artengine projects could be in a single directory
+
+```bash
+mkdir artengine_projects
+cd artengine_projects
 ```
-bash$ mkdir myproject
-bash$ cd myproject
-bash$ virtualenv env
-bash$ source ./env/bin/activate
-bash$ pip install artengine
-bash$ artengine init my_project
-bash$ cd my_project
+
+Creating and activating virtual environment
+
+```bash
+virtualenv env
+source ./env/bin/activate
 ```
+
+Install agentfud-art-engine
+
+```bash
+pip install artengine
+```
+
+Create first project
+
+```bash
+artengine init my_project
+cd my_project
+```
+
 Now we can edit **instance_config.py**
 
 If you want to fully test it, remove **layers** folder, then clone a prepared layers folder like this
