@@ -4,6 +4,7 @@ Art engine which helps you to generate thousands of beautiful images for the NFT
 ## Features
 
 - Configurable layers
+- Configurable rarity weights
 - Information about your project
 - Metadata and image generation
 - Excluding traits from metadata
