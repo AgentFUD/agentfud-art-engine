@@ -100,6 +100,9 @@ class ArtEngine:
     def build_metadata(self, id, dna) -> None:
         atributes = []
         for d in dna:
+            if hasattr(self.config, 'traits_excluded_from_metadata'):
+                if d in self.config.traits_excluded_from_metadata:
+                    continue
             atributes.append({"trait_type": d, "value": dna[d]})
         metadata = {
             "name": f"{self.config.item_name} #{id}",

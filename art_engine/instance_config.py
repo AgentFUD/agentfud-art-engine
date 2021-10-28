@@ -16,6 +16,8 @@ colors = {
 
 available_colors = ["Yellowish", "Greenish"]
 
+traits_excluded_from_metadata = ["Body", "Foot"]
+
 max_items = 10
 
 image_size = (600, 700)
