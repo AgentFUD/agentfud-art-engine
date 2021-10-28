@@ -47,9 +47,15 @@ cd my_project
 Now we can edit **instance_config.py**
 
 If you want to fully test it, remove **layers** folder, then clone a prepared layers folder like this
+
+```bash
+rm -rf layers
 ```
-bash$ git clone git@github.com:AgentFUD/layers.git
+
+```bash
+git clone git@github.com:AgentFUD/layers.git
 ```
+
 Run **artengine info**, then follow the tutorials.
 
 ## Development install
@@ -65,7 +71,7 @@ source ./env/bin/activate
 
 pip install --editable .
 ```
-type agentfud, you should see something very similar
+type artengine, you should see something very similar
 
 ```
 (env) agentfud@Legion-Y540:/tmp/agentfud-art-engine$ artengine
