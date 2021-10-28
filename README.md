@@ -1,5 +1,3 @@
-[![Pypi Status](https://img.shields.io/badge/pypi-v0.1.6-green)](https://pypi.org/project/art-engine/)
-
 # agentfud-art-engine
 Art engine which helps you to generate thousands of beautiful images for the NFT market.
 
