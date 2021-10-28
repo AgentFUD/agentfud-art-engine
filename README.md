@@ -32,10 +32,15 @@ Install agentfud-art-engine
 pip install artengine
 ```
 
-Create first project
+Create first project in my_project directory
 
 ```bash
 artengine init my_project
+```
+
+Enter into the directory, start configure and build
+
+```bash
 cd my_project
 ```
 
