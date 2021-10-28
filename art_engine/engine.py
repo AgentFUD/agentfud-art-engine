@@ -95,7 +95,7 @@ class ArtEngine:
             base_image.paste(next_image, (0, 0), next_image)
         result = base_image.resize(self.config.image_size)
         print(f"./build/images/{id}.png")
-        result.save(f"./build/images/{id}.png")
+        result.save(f"./build/images/{id}.png", 'PNG')
 
     def build_metadata(self, id, dna) -> None:
         atributes = []
@@ -107,7 +107,7 @@ class ArtEngine:
         metadata = {
             "name": f"{self.config.item_name} #{id}",
             "description": self.config.description,
-            "image": f"https://myhost.io/images/{id}.png",
+            "image": f"{self.config.image_url}/{id}.png",
             "date": f"{int(time.time())}",
             "attributes": atributes,
             "engine": self.config.engine_name,

@@ -42,3 +42,6 @@ then all the previously generated images and metadata files will be removed.
 Otherwise files will be overwritten. 
 """
 clear_project = True
+
+# The image url in metadata json files
+image_url = 'https://nft.anothernow.io/filemon-test/images'
