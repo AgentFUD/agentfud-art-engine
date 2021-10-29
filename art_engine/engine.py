@@ -19,17 +19,18 @@ class ArtEngine:
         If there is a problem it should catch the exception and notify user he has to fix configuration and/or layers.
         """
         # Check if config has traits
-        if not hasattr(self.config, 'traits'):
-            print('You have to define traits in your instance_config.py file')
+        if not hasattr(self.config, "traits"):
+            print("You have to define traits in your instance_config.py file")
             sys.exit()
         # Check if trait folders exists
         for trait_name in self.config.traits:
-            if trait_name == 'Color':
+            if trait_name == "Color":
                 continue
             if not os.path.isdir("./layers/simple/" + trait_name):
-                print(f"Trait: {trait_name} is defined in config but not exists as a directory")
+                print(
+                    f"Trait: {trait_name} is defined in config but not exists as a directory"
+                )
                 sys.exit()
-
 
     def setup_engine(self):
         self.prepare_trait_options()
@@ -94,13 +95,12 @@ class ArtEngine:
             next_image = Image.open(sprite)
             base_image.paste(next_image, (0, 0), next_image)
         result = base_image.resize(self.config.image_size)
-        print(f"./build/images/{id}.png")
-        result.save(f"./build/images/{id}.png", 'PNG')
+        result.save(f"./build/images/{id}.png", "PNG")
 
     def build_metadata(self, id, dna) -> None:
         atributes = []
         for d in dna:
-            if hasattr(self.config, 'traits_excluded_from_metadata'):
+            if hasattr(self.config, "traits_excluded_from_metadata"):
                 if d in self.config.traits_excluded_from_metadata:
                     continue
             atributes.append({"trait_type": d, "value": dna[d]})
@@ -112,7 +112,6 @@ class ArtEngine:
             "attributes": atributes,
             "engine": self.config.engine_name,
         }
-        print(f"./build/metadata/{id}.json")
         with open(f"./build/metadata/{id}.json", "w", encoding="utf-8") as f:
             json.dump(metadata, f, ensure_ascii=False, indent=4)
         return metadata

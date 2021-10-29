@@ -1,20 +1,8 @@
-traits = [
-    "Background Color",
-    "Color",
-    "Body",
-    "Ear",
-    "Tail",
-    "Eye",
-    "Mouth",
-    "Foot"
-]
+traits = ["Background Color", "Color", "Body", "Ear", "Tail", "Eye", "Mouth", "Foot"]
 
 complex_traits = ["Color"]
 
-colors = {
-    "Greenish": ["Body", "Ear", "Tail"],
-    "Yellowish": ["Body", "Ear", "Tail"]
-}
+colors = {"Greenish": ["Body", "Ear", "Tail"], "Yellowish": ["Body", "Ear", "Tail"]}
 
 available_colors = ["Yellowish", "Greenish"]
 
@@ -44,4 +32,4 @@ Otherwise files will be overwritten.
 clear_project = True
 
 # The image url in metadata json files
-image_url = 'https://nft.anothernow.io/filemon-test/images'
+image_url = "https://nft.anothernow.io/filemon-test/images"

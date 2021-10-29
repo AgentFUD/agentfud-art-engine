@@ -20,12 +20,12 @@ def cli(target_directory):
     click.echo("Init started ...")
 
     parent_dir = pathlib.Path(__file__).parent.resolve().parent.resolve()
-    instance_config_full_path = os.path.join(parent_dir, 'instance_config.py')
+    instance_config_full_path = os.path.join(parent_dir, "instance_config.py")
 
     for dir in appconfig.project_template:
         os.makedirs(
             os.path.join(target_directory, appconfig.project_template[dir]),
             exist_ok=True,
-        )    
+        )
     shutil.copy(instance_config_full_path, target_directory)
     click.echo("Done ...")
