@@ -2,7 +2,12 @@ from PIL import Image
 
 import math, random, json, time
 import os, sys
-from art_engine.dna_generator import SequentialGenerator, RandomGenerator, RarityWeightGenerator
+from art_engine.dna_generator import (
+    SequentialGenerator,
+    RandomGenerator,
+    RarityWeightGenerator,
+)
+
 
 class ArtEngine:
     def __init__(self, config) -> None:
@@ -60,7 +65,11 @@ class ArtEngine:
         self.trait_options["Color"] = self.config.available_colors
 
     def generate_dnas(self, max_items=10) -> None:
-        self.dnas = self.dna_generator.generate_dnas(traits=self.config.traits, trait_options=self.trait_options, quantity=max_items)
+        self.dnas = self.dna_generator.generate_dnas(
+            traits=self.config.traits,
+            trait_options=self.trait_options,
+            quantity=max_items,
+        )
 
     def generate_sprite_configs(self) -> None:
         for dna in self.dnas:
