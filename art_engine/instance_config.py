@@ -18,9 +18,9 @@ engine_name = "Agent FUD Art Engine v0.1"
 
 """
 We have 3 DNA generation types:
-- 1: totally random DNA generation
-- 2: random DNA generation based on rarity configuration
-- 3 deterministic, all the possible DNA configurations will be generated
+- 1: sequential; deterministic, all the possible DNA configurations will be generated
+- 2: random; random DNA generation
+- 3: random DNA generation based on rarity configuration
 """
 dna_generation_type = 1
 
