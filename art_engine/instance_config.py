@@ -22,7 +22,7 @@ We have 3 DNA generation types:
 - 2: random; random DNA generation
 - 3: random DNA generation based on rarity configuration
 """
-dna_generation_type = 1
+dna_generation_type = 2
 
 """
 When you run it multiple times if clear_project is True
