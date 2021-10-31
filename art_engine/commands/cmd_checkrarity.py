@@ -40,13 +40,10 @@ def cli():
                 else:
                     trait_counts[attribute["trait_type"]][attribute["value"]] += 1
 
-    print(trait_counts)
-    print(number_of_items_in_collection)
-
     project = os.getcwd()
     table = Table()
     table.add_column(
-        f"Trait type / Trait value ({number_of_items_in_collection})", style="gold3"
+        f"Trait type / Trait value ([yellow]Σ:{number_of_items_in_collection}[/yellow])", style="gold3"
     )
     table.add_column("Item count", style="dodger_blue1")
     table.add_column("Rarity", style="dodger_blue1")

@@ -1,3 +1,5 @@
+base_image = './layers/Base.png'
+
 traits = ["Background Color", "Color", "Body", "Ear", "Tail", "Eye", "Mouth", "Foot"]
 
 complex_traits = ["Color"]
@@ -23,13 +25,6 @@ We have 3 DNA generation types:
 - 3: random DNA generation based on rarity configuration
 """
 dna_generation_type = 2
-
-"""
-When you run it multiple times if clear_project is True
-then all the previously generated images and metadata files will be removed.
-Otherwise files will be overwritten. 
-"""
-clear_project = True
 
 # The image url in metadata json files
 image_url = "https://nft.anothernow.io/filemon-test/images"

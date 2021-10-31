@@ -37,6 +37,9 @@ class ArtEngine:
                     f"Trait: {trait_name} is defined in config but not exists as a directory"
                 )
                 sys.exit()
+        # Check if base image exists
+        if not os.path.exists(self.config.base_image):
+            print("Don't forget to set config.base_image")
 
     def setup_engine(self):
         if self.config.dna_generation_type == 1:
@@ -100,7 +103,8 @@ class ArtEngine:
         print("Done...")
 
     def build_image(self, id, sprite_config) -> None:
-        base_image = Image.open("./layers/simple/Background Color/LightBlue.png")
+        # base_image = Image.open("./layers/simple/Background Color/LightBlue.png")
+        base_image = Image.open(self.config.base_image)
         for i, sprite in enumerate(sprite_config):
             next_image = Image.open(sprite)
             base_image.paste(next_image, (0, 0), next_image)
