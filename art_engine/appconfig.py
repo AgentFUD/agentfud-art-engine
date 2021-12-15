@@ -7,7 +7,7 @@ project_template = {
     "built_images": "build/images",
     "built_metadata": "build/metadata",
     "simple_layer": "layers/simple",
-    "complex_layer": "layers/colors",
+    "complex_layer": "layers/complex",
 }
 
 RARITY_JSON_NAME = "rarity-config.json"
