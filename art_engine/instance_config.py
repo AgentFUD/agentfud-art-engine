@@ -1,4 +1,4 @@
-base_image = './layers/Base.png'
+base_image = "./layers/Base.png"
 
 traits = ["Background Color", "Color", "Body", "Ear", "Tail", "Eye", "Mouth", "Foot"]
 

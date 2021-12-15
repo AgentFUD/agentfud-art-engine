@@ -12,7 +12,11 @@ from art_engine.appconfig import RARITY_JSON_NAME
 class SimpleDNAGeneratorStrategy(ABC):
     @abstractmethod
     def generate_dnas(
-        self, traits: List[str], trait_options: List[dict], collection_size: int, retries: Optional[int]
+        self,
+        traits: List[str],
+        trait_options: List[dict],
+        collection_size: int,
+        retries: Optional[int],
     ) -> List[dict]:
         pass
 
@@ -20,14 +24,22 @@ class SimpleDNAGeneratorStrategy(ABC):
 class RetryDNAGeneratorStrategy(ABC):
     @abstractmethod
     def generate_dnas(
-        self, traits: List[str], trait_options: List[dict], collection_size: int, retries: int
+        self,
+        traits: List[str],
+        trait_options: List[dict],
+        collection_size: int,
+        retries: int,
     ) -> List[dict]:
         pass
 
 
 class SequentialGenerator(SimpleDNAGeneratorStrategy):
     def generate_dnas(
-        self, traits: List[str], trait_options: List[dict], collection_size: int, retries: Optional[int]
+        self,
+        traits: List[str],
+        trait_options: List[dict],
+        collection_size: int,
+        retries: Optional[int],
     ) -> List[dict]:
         ordered_trait_options = [trait_options[val] for val in traits]
         dnas = []
@@ -39,7 +51,11 @@ class SequentialGenerator(SimpleDNAGeneratorStrategy):
 
 class RandomGenerator(SimpleDNAGeneratorStrategy):
     def generate_dnas(
-        self, traits: List[str], trait_options: List[str], collection_size: int, retries: Optional[int]
+        self,
+        traits: List[str],
+        trait_options: List[str],
+        collection_size: int,
+        retries: Optional[int],
     ) -> List[dict]:
         ordered_trait_options = [trait_options[val] for val in traits]
         dnas = []
@@ -55,7 +71,11 @@ class RarityWeightGenerator(RetryDNAGeneratorStrategy):
         return hashlib.sha1(json.dumps(dna, sort_keys=True).encode("UTF-8")).hexdigest()
 
     def generate_dnas(
-        self, traits: List[str], trait_options: List[str], collection_size: int, retries: int = 0
+        self,
+        traits: List[str],
+        trait_options: List[str],
+        collection_size: int,
+        retries: int,
     ) -> List[dict]:
         try:
             with open(RARITY_JSON_NAME, "r") as file:

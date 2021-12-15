@@ -30,6 +30,7 @@ def cli(type, clean_up):
         return
 
     engine.generate_sprite_configs()
+
     if type in ["metadata", "both"]:
         for index, dna in track(
             enumerate(engine.dnas),

@@ -72,17 +72,17 @@ class ArtEngine:
             traits=self.config.traits,
             trait_options=self.trait_options,
             collection_size=collection_size,
-            retries=retries
+            retries=retries,
         )
-    
+
     def load_dnas(self) -> None:
-        with open(self.config.project_template['cache'] + '/metadata.json', 'r') as f:
+        with open(self.config.project_template["cache"] + "/metadata.json", "r") as f:
             self.dnas = json.load(f)
 
     def save_dnas(self) -> None:
-        if(len(self.dnas) == 0):
+        if len(self.dnas) == 0:
             return
-        with open(self.config.project_template['cache'] + '/metadata.json', 'w') as f:
+        with open(self.config.project_template["cache"] + "/metadata.json", "w") as f:
             f.write(json.dumps(self.dnas))
 
     def generate_sprite_configs(self) -> None:

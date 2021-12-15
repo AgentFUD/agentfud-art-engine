@@ -6,7 +6,7 @@ Art engine which helps you to generate thousands of beautiful images for the NFT
 - Configurable layers
 - Configurable rarity weights
 - Information about your project
-- Metadata and image generation
+- Metadata and image generation based on pre-generated DNAs
 - Excluding traits from metadata
 
 ## Installation
@@ -58,6 +58,34 @@ git clone git@github.com:AgentFUD/layers.git
 ```
 
 Run **artengine info**, then follow the tutorials.
+
+## Usage
+
+Create your own layers.
+
+Edit **instance_config.py**, set up your layers, DNA generation type, etc.
+
+Generate rarity configuration file with
+```bash
+artengine rarity generateconfig
+```
+
+Edit rarity-config.json as you like. Please keep in mind artengine info will tell you the maximum possible combinations so do not try generate more than you possibly could.
+
+Generate DNA database. 
+```bash
+artengine dna --collection_size 30 -retries 10
+```
+
+Check generated rarities with
+```bash
+artengine rarity check
+```
+
+Bake your images
+```bash
+artengine bake both/metadata/images [--clean-up]
+```
 
 ## Development install
 
