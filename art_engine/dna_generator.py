@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List
+from typing import List, Optional
 from itertools import product
 import random
 import json
@@ -9,29 +9,37 @@ from rich import print
 from art_engine.appconfig import RARITY_JSON_NAME
 
 
-class DNAGeneratorStrategy(ABC):
+class SimpleDNAGeneratorStrategy(ABC):
     @abstractmethod
     def generate_dnas(
-        self, traits: List[str], trait_options: List[dict], quantity: int
+        self, traits: List[str], trait_options: List[dict], collection_size: int, retries: Optional[int]
     ) -> List[dict]:
         pass
 
 
-class SequentialGenerator(DNAGeneratorStrategy):
+class RetryDNAGeneratorStrategy(ABC):
+    @abstractmethod
     def generate_dnas(
-        self, traits: List[str], trait_options: List[dict], quantity: int
+        self, traits: List[str], trait_options: List[dict], collection_size: int, retries: int
+    ) -> List[dict]:
+        pass
+
+
+class SequentialGenerator(SimpleDNAGeneratorStrategy):
+    def generate_dnas(
+        self, traits: List[str], trait_options: List[dict], collection_size: int, retries: Optional[int]
     ) -> List[dict]:
         ordered_trait_options = [trait_options[val] for val in traits]
         dnas = []
         for x in product(*ordered_trait_options):
             y = zip(traits, list(x))
             dnas.append(dict(y))
-        return dnas[:quantity]
+        return dnas[:collection_size]
 
 
-class RandomGenerator(ABC):
+class RandomGenerator(SimpleDNAGeneratorStrategy):
     def generate_dnas(
-        self, traits: List[str], trait_options: List[str], quantity: int
+        self, traits: List[str], trait_options: List[str], collection_size: int, retries: Optional[int]
     ) -> List[dict]:
         ordered_trait_options = [trait_options[val] for val in traits]
         dnas = []
@@ -39,15 +47,15 @@ class RandomGenerator(ABC):
             y = zip(traits, list(x))
             dnas.append(dict(y))
         random.shuffle(dnas)
-        return dnas[:quantity]
+        return dnas[:collection_size]
 
 
-class RarityWeightGenerator(ABC):
+class RarityWeightGenerator(RetryDNAGeneratorStrategy):
     def hash_dna(self, dna):
         return hashlib.sha1(json.dumps(dna, sort_keys=True).encode("UTF-8")).hexdigest()
 
     def generate_dnas(
-        self, traits: List[str], trait_options: List[str], quantity: int
+        self, traits: List[str], trait_options: List[str], collection_size: int, retries: int = 0
     ) -> List[dict]:
         try:
             with open(RARITY_JSON_NAME, "r") as file:
@@ -62,7 +70,7 @@ class RarityWeightGenerator(ABC):
 
         existing_dna_hashes = []
         dnas = []
-        for d in range(quantity):
+        for d in range(collection_size + retries):
             dnax = {}
             for n in traits:
                 dnax[n] = random.choices(
@@ -72,4 +80,4 @@ class RarityWeightGenerator(ABC):
             if h not in existing_dna_hashes:
                 existing_dna_hashes.append(h)
                 dnas.append(dnax)
-        return dnas
+        return dnas[:collection_size]

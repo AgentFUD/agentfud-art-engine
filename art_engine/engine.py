@@ -67,12 +67,23 @@ class ArtEngine:
         }
         self.trait_options["Color"] = self.config.available_colors
 
-    def generate_dnas(self, max_items=10) -> None:
+    def generate_dnas(self, collection_size, retries) -> None:
         self.dnas = self.dna_generator.generate_dnas(
             traits=self.config.traits,
             trait_options=self.trait_options,
-            quantity=max_items,
+            collection_size=collection_size,
+            retries=retries
         )
+    
+    def load_dnas(self) -> None:
+        with open(self.config.project_template['cache'] + '/metadata.json', 'r') as f:
+            self.dnas = json.load(f)
+
+    def save_dnas(self) -> None:
+        if(len(self.dnas) == 0):
+            return
+        with open(self.config.project_template['cache'] + '/metadata.json', 'w') as f:
+            f.write(json.dumps(self.dnas))
 
     def generate_sprite_configs(self) -> None:
         for dna in self.dnas:

@@ -8,15 +8,12 @@ from rich.progress import track
 
 @click.command()
 @click.argument("type", type=click.Choice(["images", "metadata", "both"]))
-@click.option(
-    "--quantity", "-q", type=int, required=True, help="How many I should generate"
-)
-@click.option("--regenerate", "-rg", type=bool)
-def cli(type, quantity, regenerate):
+@click.option("--clean-up/--no-clean-up", "-cl/-ncl", default=False)
+def cli(type, clean_up):
     """
     Bakes images and metadata files
     """
-    if regenerate:
+    if clean_up:
         shutil.rmtree("./build", ignore_errors=True)
         for dir in config.project_template:
             os.makedirs(
@@ -26,7 +23,12 @@ def cli(type, quantity, regenerate):
 
     engine = ArtEngine(config)
     engine.setup_engine()
-    engine.generate_dnas(quantity)
+    try:
+        engine.load_dnas()
+    except FileNotFoundError:
+        print("DNA database has not been found, please run artengine dna command first")
+        return
+
     engine.generate_sprite_configs()
     if type in ["metadata", "both"]:
         for index, dna in track(
