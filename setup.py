@@ -16,7 +16,7 @@ def read_requirements():
 
 setup(
     name="agentfud-art-engine",
-    version="0.3.2",
+    version="0.3.3",
     author='AgentFUD',
     author_email='agentfud@gmail.com',
     description=DESCRIPTION,

@@ -13,8 +13,9 @@ complex_project_template = {
     "cache": "cache",
     "built_images": "build/images",
     "built_metadata": "build/metadata",
-    "simple_layers": "layers/simple",
-    "complex_layers": "layers/complex",
+    "outline_layers": "layers/outline",
+    "outline_colors_layers": "layers/outline-color",
+    "simple-layers": "layers/simple"
 }
 
 RARITY_JSON_NAME = "rarity-config.json"

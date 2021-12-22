@@ -137,9 +137,9 @@ class SimpleEngine:
         return metadata
 
     def build_image(self, id, sprite_config) -> None:
-        base_image = Image.open(self.config.base_image)
+        base_image = Image.open(self.config.base_image).convert("RGBA")
         for i, sprite in enumerate(sprite_config):
-            next_image = Image.open(sprite)
+            next_image = Image.open(sprite).convert("RGBA")
             base_image.paste(next_image, (0, 0), next_image)
         result = base_image.resize(self.config.image_size)
         result.save(
