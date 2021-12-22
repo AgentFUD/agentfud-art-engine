@@ -1,13 +1,20 @@
 import sys, os
 
-
-project_template = {
+simple_project_template = {
     "scripts": "scripts",
     "cache": "cache",
     "built_images": "build/images",
     "built_metadata": "build/metadata",
-    "simple_layer": "layers/simple",
-    "complex_layer": "layers/complex",
+    "simple_layers": "layers/simple",
+}
+
+complex_project_template = {
+    "scripts": "scripts",
+    "cache": "cache",
+    "built_images": "build/images",
+    "built_metadata": "build/metadata",
+    "simple_layers": "layers/simple",
+    "complex_layers": "layers/complex",
 }
 
 RARITY_JSON_NAME = "rarity-config.json"

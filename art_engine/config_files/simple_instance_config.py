@@ -1,12 +1,8 @@
+engine_type = "simple"
+
 base_image = "./layers/Base.png"
 
-traits = ["Background Color", "Color", "Body", "Ear", "Tail", "Eye", "Mouth", "Foot"]
-
-complex_traits = ["Color"]
-
-colors = {"Greenish": ["Body", "Ear", "Tail"], "Yellowish": ["Body", "Ear", "Tail"]}
-
-available_colors = ["Yellowish", "Greenish"]
+traits = ["Background Color", "Body", "Foot", "Eye", "Mouth"]
 
 traits_excluded_from_metadata = ["Body", "Foot"]
 
@@ -24,7 +20,7 @@ We have 3 DNA generation types:
 - 2: random; random DNA generation
 - 3: random DNA generation based on rarity configuration
 """
-dna_generation_type = 2
+dna_generation_type = 1
 
 # The image url in metadata json files
 image_url = "https://nft.anothernow.io/filemon-test/images"

@@ -1,5 +1,5 @@
 import click
-from art_engine.engine import ArtEngine
+from art_engine.engine_factory import ArtEngineFactory
 import art_engine.appconfig as config
 from rich.console import Console
 from rich.table import Table
@@ -10,7 +10,9 @@ def cli():
     """
     Gathers and prints out information about your project
     """
-    engine = ArtEngine(config)
+    factory = ArtEngineFactory(config)
+    engine = factory.getEngine()
+
     engine.setup_engine()
     console = Console()
     table = Table(show_header=True, header_style="bold yellow")
