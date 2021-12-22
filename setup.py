@@ -1,8 +1,7 @@
 from setuptools import setup, find_packages
-from pathlib import Path
 import os, pathlib
 
-DESCRIPTION = 'Agent FUD Art Engine'
+DESCRIPTION = 'AgentFUD Art Engine'
 
 this_directory = pathlib.Path(__file__).parent.resolve()
 with open(os.path.join(this_directory, 'README.md')) as readme:
@@ -17,8 +16,8 @@ def read_requirements():
 
 setup(
     name="agentfud-art-engine",
-    version="0.2.5",
-    author='Agent FUD',
+    version="0.3.1",
+    author='AgentFUD',
     author_email='agentfud@gmail.com',
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
