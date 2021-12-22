@@ -1,5 +1,3 @@
-engine_type = "simple"
-
 base_image = "./layers/Base.png"
 
 traits = ["Background Color", "Body", "Foot", "Eye", "Mouth"]
@@ -12,8 +10,6 @@ item_name = "Filemon"
 
 description = "Schrödinger's cat who's name is Filemon"
 
-engine_name = "Agent FUD Art Engine v0.1"
-
 """
 We have 3 DNA generation types:
 - 1: sequential; deterministic, all the possible DNA configurations will be generated
@@ -24,3 +20,8 @@ dna_generation_type = 1
 
 # The image url in metadata json files
 image_url = "https://nft.anothernow.io/filemon-test/images"
+
+##########################################################################
+### WARNING!!! DO NOT EDIT BELOW THIS LINE, IT MIGHT BREAK THE ENGINE. ###
+##########################################################################
+engine_type = "simple"
