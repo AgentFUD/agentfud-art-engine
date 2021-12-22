@@ -1,7 +1,7 @@
 import click
 import shutil
 import os
-from art_engine.engine import ArtEngine
+from art_engine.engine_factory import ArtEngineFactory
 import art_engine.appconfig as config
 from rich.progress import track
 
@@ -21,7 +21,8 @@ def cli(type, clean_up):
                 exist_ok=True,
             )
 
-    engine = ArtEngine(config)
+    factory = ArtEngineFactory(config)
+    engine = factory.getEngine()
     engine.setup_engine()
     try:
         engine.load_dnas()

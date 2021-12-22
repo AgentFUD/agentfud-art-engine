@@ -1,5 +1,5 @@
 import click
-from art_engine.engine import ArtEngine
+from art_engine.engine_factory import ArtEngineFactory
 import art_engine.appconfig as config
 from rich.console import Console
 from rich.table import Table
@@ -24,7 +24,8 @@ def cli(collection_size, retries):
     """
     Generates DNAs for your project in the cache folder
     """
-    engine = ArtEngine(config)
+    factory = ArtEngineFactory(config)
+    engine = factory.getEngine()
     engine.setup_engine()
     engine.generate_dnas(collection_size, retries)
     engine.save_dnas()

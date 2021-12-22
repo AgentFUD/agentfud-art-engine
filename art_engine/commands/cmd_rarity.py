@@ -1,12 +1,15 @@
 import click, json
 from rich.console import Console
 from rich.table import Table
-from art_engine.engine import ArtEngine
+from art_engine.engine_factory import ArtEngineFactory
 import art_engine.appconfig as config
 
 
 @click.group()
 def cli():
+    """
+    Generates and checks planned rarities
+    """
     pass
 
 
@@ -15,7 +18,8 @@ def generate():
     """
     Generate rarity configuration file
     """
-    engine = ArtEngine(config)
+    factory = ArtEngineFactory(config)
+    engine = factory.getEngine()
     engine.setup_engine()
     engine.generate_rarity_config()
 
@@ -25,15 +29,22 @@ def check():
     """
     Compares and outputs real rarities based on DNA database
     """
-    engine = ArtEngine(config)
+    factory = ArtEngineFactory(config)
+    engine = factory.getEngine()
     engine.setup_engine()
 
     dnas = []
     trait_counts = {}
     planned_rarities = []
+    project_template = None
+
+    if engine.config.engine_type == "simple":
+        project_template = config.simple_project_template
+    elif engine.config.engine_type == "complex":
+        project_template = config.complex_project_template
 
     try:
-        with open(engine.config.project_template["cache"] + "/metadata.json", "r") as f:
+        with open(project_template["cache"] + "/metadata.json", "r") as f:
             dnas = json.load(f)
     except FileNotFoundError:
         print("DNA database not found")
