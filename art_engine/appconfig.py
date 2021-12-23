@@ -13,14 +13,11 @@ complex_project_template = {
     "cache": "cache",
     "built_images": "build/images",
     "built_metadata": "build/metadata",
-    "outline_layers": "layers/outline",
-    "outline_colors_layers": "layers/outline-color",
-    "simple-layers": "layers/simple"
+    "simple_layer": "layers/simple",
+    "complex_layer": "layers/complex",
 }
 
 RARITY_JSON_NAME = "rarity-config.json"
-
-max_items = 10
 
 image_size = (600, 700)
 
@@ -43,8 +40,6 @@ When you run it multiple times if clear_project is True
 then all the previously generated images and metadata files will be removed.
 Otherwise files will be overwritten. 
 """
-clear_project = True
-
 
 try:
     sys.path.append(os.getcwd())

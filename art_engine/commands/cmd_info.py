@@ -16,7 +16,7 @@ def cli():
     engine.setup_engine()
     console = Console()
     table = Table(show_header=True, header_style="bold yellow")
-    table.add_column("Item")
+    table.add_column("Property")
     table.add_column("Value")
 
     table.add_row("Max possible combinations", str(engine.max_possible_combinations))

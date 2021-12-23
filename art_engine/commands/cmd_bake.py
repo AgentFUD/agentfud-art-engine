@@ -13,16 +13,23 @@ def cli(type, clean_up):
     """
     Bakes images and metadata files
     """
+    factory = ArtEngineFactory(config)
+    engine = factory.getEngine()
+    project_template = None
+
+    if engine.config.engine_type == "simple":
+        project_template = config.simple_project_template
+    elif engine.config.engine_type == "complex":
+        project_template = config.complex_project_template
+
     if clean_up:
         shutil.rmtree("./build", ignore_errors=True)
-        for dir in config.project_template:
+        for dir in project_template:
             os.makedirs(
-                config.project_template[dir],
+                project_template[dir],
                 exist_ok=True,
             )
 
-    factory = ArtEngineFactory(config)
-    engine = factory.getEngine()
     engine.setup_engine()
     try:
         engine.load_dnas()

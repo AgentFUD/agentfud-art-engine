@@ -6,7 +6,7 @@ from rich.table import Table
 
 
 @click.option(
-    "--collection_size",
+    "--collection-size",
     "-cs",
     required=True,
     type=int,
